@@ -1,0 +1,155 @@
+
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #e0eafc, #cfdef3);
+        min-height: 100vh;
+    }
+
+    .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 15px;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 430px;
+        background: #ffffff;
+        padding: 40px 35px;
+        border-radius: 18px;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.10);
+    }
+
+    .login-logo {
+        width: 105px;
+        height: 105px;
+        object-fit: contain;
+        border-radius: 50%;
+        margin-bottom: 15px;
+    }
+
+    .login-title {
+        color: #1e293b;
+        font-weight: 700;
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+
+    .login-subtitle {
+        color: #64748b;
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+
+    .form-control {
+        padding: 13px 15px;
+        border-radius: 9px;
+        border: 1px solid #dbe2ea;
+        background-color: #f8fafc;
+        font-size: 15px;
+    }
+
+    .form-control:focus {
+        background-color: #ffffff;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+    }
+
+    .login-btn {
+        background: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 9px;
+        padding: 13px;
+        font-weight: 600;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+
+    .login-btn:hover {
+        background: #1d4ed8;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .register-link {
+        color: #2563eb;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .register-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <div class="text-center">
+
+            <img src="{% static 'image/logo.png' %}"
+                 class="login-logo"
+                 alt="Scripto Logo">
+
+            <h2 class="login-title">Welcome Back!</h2>
+
+            <p class="login-subtitle">
+                Login to continue to Scripto
+            </p>
+
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Username</label>
+                <input type="text"
+                       class="form-control"
+                       name="uname"
+                       placeholder="Enter your username"
+                       autocomplete="username"
+                       required>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-semibold">Password</label>
+                <input type="password"
+                       class="form-control"
+                       name="upassword"
+                       placeholder="Enter your password"
+                       autocomplete="current-password"
+                       required>
+            </div>
+
+            <button type="submit"
+                    class="btn login-btn w-100">
+                Login
+            </button>
+
+        </form>
+
+        <div class="text-center mt-4">
+            <span class="text-secondary">
+                Not registered yet?
+            </span>
+
+            <a href="/" class="register-link">
+                Create an Account
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
